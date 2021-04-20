@@ -1,6 +1,42 @@
 # airlines-tickets
 Airlines tickets
 
+#Deploy project
+```
+docker-compose build
+docker-compose up -d
+docker exec -it airline_api sh docker/init.sh
+```
+
+#### Deploy symfony project (if you don't have docker!)
+
+###### __Update composer__
+```bash
+composer self-update
+
+```
+
+###### __Install dependencies composer__
+```bash
+composer install
+
+```
+
+###### __Create database__
+```bash
+php bin/console doctrine:database:create
+
+```
+
+###### __Make migrations__
+```bash
+php bin/console doctrine:migrations:migrate
+
+```
+###### __Load fixtures__
+```bash
+php bin/console doctrine:fixtures:load --append
+
 ### Тестовое задание для Middle Back-end Developer (PHP):
 
 Реализовать небольшое API для авиакомпании. API реагирует на следующие запросы-команды пользователя:
