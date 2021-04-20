@@ -1,0 +1,16 @@
+/.git
+/.idea
+/docker
+/fixtures
+/tests
+/vendor
+/var/cache
+/var/logs
+/var/sessions
+/var/bootstrap.php.cache
+README.md
+docker-compose.yaml
+.env.test
+.dockerignore
+.gitignore
+.phpunit.result.cache
