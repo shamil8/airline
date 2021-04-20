@@ -8,6 +8,13 @@ docker-compose up -d
 docker exec -it airline_api sh docker/init.sh
 ```
 
+```TODO
+NEED TO ADD events callback-уведомления for flight canceled and $isFlightTicketSales
+
+Пояснение:
+Можно было $isFlightTicketSales добавить статусы рейса (исходились из того, что это по сути две разные вещи)
+```
+
 APi Platform: http://localhost:8080/api
 
 #### Deploy symfony project (if you don't have docker!)

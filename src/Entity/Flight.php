@@ -5,10 +5,12 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Constants\FlightConstants;
 use App\Repository\FlightRepository;
+use App\Doctrine\FlightSetIsFlightListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -30,6 +32,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  *
+ * @ORM\EntityListeners({FlightSetIsFlightListener::class})
  * @ORM\Entity(repositoryClass=FlightRepository::class)
  */
 class Flight
@@ -45,18 +48,21 @@ class Flight
     /**
      * @ORM\Column(type="string", length=55)
      * @Groups({"flight:read", "flight:write"})
+     * @Assert\NotBlank()
      */
     private $code;
 
     /**
      * @ORM\Column(type="float")
      * @Groups({"flight:read", "flight:write"})
+     * @Assert\NotBlank()
      */
     private $standardPrice;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"flight:read", "flight:write"})
+     * @Assert\NotBlank()
      */
     private $ticketsCount;
 

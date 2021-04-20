@@ -7,6 +7,7 @@ use App\Repository\BookingRepository;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -43,6 +44,7 @@ class Booking
     /**
      * @ORM\Column(type="date")
      * @Groups({"book:read", "book:write"})
+     * @Assert\NotBlank()
      */
     private $date;
 
