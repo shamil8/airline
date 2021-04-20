@@ -8,6 +8,8 @@ docker-compose up -d
 docker exec -it airline_api sh docker/init.sh
 ```
 
+APi Platform: http://localhost:8080/api
+
 #### Deploy symfony project (if you don't have docker!)
 
 ###### __Update composer__
@@ -61,3 +63,9 @@ PHP 7.3;
 добавить инструкцию по сборке/запуску проекта;
 результат выложить на Github/Gitlab.
 ```
+
+
+# Demo API platform (it's awesome)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/shamil8/airline/main/public/api-platform.png" alt="VarX image">
+</p>

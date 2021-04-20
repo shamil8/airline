@@ -2,10 +2,31 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={
+ *          "get",
+ *          "post"
+ *     },
+ *     itemOperations={
+ *          "get",
+ *          "put",
+ *          "delete"
+ *      },
+ *     normalizationContext={"groups"={"ticket:read"}},
+ *     denormalizationContext={"groups"={"ticket:write"}},
+ *
+ *     attributes={
+ *     "pagination_items_per_page"=100,
+ *      "formats"={ "json", "html", "csv"={"text/csv"}}
+ *     }
+ * )
+ *
  * @ORM\Entity(repositoryClass=TicketRepository::class)
  */
 class Ticket
@@ -14,37 +35,44 @@ class Ticket
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"ticket:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=5)
+     * @Groups({"ticket:read", "ticket:write"})
      */
     private $seat;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"ticket:read", "ticket:write"})
      */
     private $passengerName;
 
     /**
      * @ORM\Column(type="string", length=55)
+     * @Groups({"ticket:read", "ticket:write"})
      */
     private $phone;
 
     /**
      * @ORM\OneToOne(targetEntity=Booking::class, inversedBy="ticket", cascade={"persist", "remove"})
+     * @Groups({"ticket:read", "ticket:write"})
      */
     private $bookingId;
 
     /**
      * @ORM\ManyToOne(targetEntity=Flight::class, inversedBy="tickets")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"ticket:read", "ticket:write"})
      */
     private $flightId;
 
     /**
      * @ORM\Column(type="string", length=55, nullable=true)
+     * @Groups({"ticket:read", "ticket:write"})
      */
     private $passengerEmail;
 

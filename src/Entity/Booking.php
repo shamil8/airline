@@ -2,11 +2,32 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BookingRepository;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={
+ *          "get",
+ *          "post"
+ *     },
+ *     itemOperations={
+ *          "get",
+ *          "put",
+ *          "delete"
+ *      },
+ *     normalizationContext={"groups"={"book:read"}},
+ *     denormalizationContext={"groups"={"book:write"}},
+ *
+ *     attributes={
+ *     "pagination_items_per_page"=100,
+ *      "formats"={ "json", "html", "csv"={"text/csv"}}
+ *     }
+ * )
+ *
  * @ORM\Entity(repositoryClass=BookingRepository::class)
  */
 class Booking
@@ -15,26 +36,31 @@ class Booking
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"book:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"book:read", "book:write"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"book:read", "book:write"})
      */
     private $totalAmount;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"book:read", "book:write"})
      */
-    private $isActive;
+    private $isActive = true;
 
     /**
      * @ORM\OneToOne(targetEntity=Ticket::class, mappedBy="bookingId", cascade={"persist", "remove"})
+     * @Groups({"book:read"})
      */
     private $ticket;
 
