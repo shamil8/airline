@@ -1,8 +1,8 @@
-# airlines-tickets
-Airlines tickets
+# airline
+Airline tickets
 
-#Deploy project
-```
+## Deploy project
+``` docker
 docker-compose build
 docker-compose up -d
 docker exec -it airline_api sh docker/init.sh
@@ -13,29 +13,9 @@ docker exec -it airline_api sh docker/init.sh
 ###### __Update composer__
 ```bash
 composer self-update
-
-```
-
-###### __Install dependencies composer__
-```bash
 composer install
-
+thisApplicationPath: sh docker/init.sh
 ```
-
-###### __Create database__
-```bash
-php bin/console doctrine:database:create
-
-```
-
-###### __Make migrations__
-```bash
-php bin/console doctrine:migrations:migrate
-
-```
-###### __Load fixtures__
-```bash
-php bin/console doctrine:fixtures:load --append
 
 ### Тестовое задание для Middle Back-end Developer (PHP):
 
@@ -61,13 +41,23 @@ php bin/console doctrine:fixtures:load --append
 рейс отменён.
 
 Пример уведомления:
-{"data":{"flight_id":1,"triggered_at":1585012345,"event":"flight_ticket_sales_completed","secret_key":"a1b2c3d4e5f6a1b2c3d4e5f6"}}
-
+```json
+{
+  "data": {
+    "flight_id": 1,
+    "triggered_at": 1585012345,
+    "event": "flight_ticket_sales_completed",
+    "secret_key": "a1b2c3d4e5f6a1b2c3d4e5f6"
+  }
+}
+```
 При отмене рейса пользователям, забронировавшим или купившим билеты на этот рейс, в фоновом режиме (асинхронно) отправляются эл. письма об отмене рейса. В случае ответа на событие HTTP кодом отличным от 200 событие будет повторно получено через некоторый промежуток времени.
 
-Условия реализации
+###### Условия реализации
+```text
 Symfony 4+;
 PHP 7.3;
 в качестве хранилища — что угодно (БД, память и т.д.);
 добавить инструкцию по сборке/запуску проекта;
 результат выложить на Github/Gitlab.
+```
