@@ -9,10 +9,10 @@ docker exec -it airline_api sh docker/init.sh
 ```
 
 ```TODO
-NEED TO ADD events callback-уведомления for flight canceled and $isFlightTicketSales
+NEED TO ADD events callback-notification for flight canceled and $isFlightTicketSales
 
 Пояснение:
-Можно было $isFlightTicketSales добавить статусы рейса (исходились из того, что это по сути две разные вещи)
+Можно было $isFlightTicketSales добавить в статусы рейса (исходил из того, что это по сути две разные вещи)
 ```
 
 APi Platform: http://localhost:8080/api
