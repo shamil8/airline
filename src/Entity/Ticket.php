@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use App\Validator\IsValidSeat;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -40,20 +42,24 @@ class Ticket
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="integer", length=3)
      * @Groups({"ticket:read", "ticket:write"})
+     * @Assert\NotBlank()
+     * @IsValidSeat()
      */
     private $seat;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"ticket:read", "ticket:write"})
+     * @Assert\NotBlank()
      */
     private $passengerName;
 
     /**
      * @ORM\Column(type="string", length=55)
      * @Groups({"ticket:read", "ticket:write"})
+     * @Assert\NotBlank()
      */
     private $phone;
 
@@ -67,6 +73,7 @@ class Ticket
      * @ORM\ManyToOne(targetEntity=Flight::class, inversedBy="tickets")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"ticket:read", "ticket:write"})
+     * @Assert\NotBlank()
      */
     private $flightId;
 
@@ -81,12 +88,12 @@ class Ticket
         return $this->id;
     }
 
-    public function getSeat(): ?string
+    public function getSeat(): ?int
     {
         return $this->seat;
     }
 
-    public function setSeat(string $seat): self
+    public function setSeat(int $seat): self
     {
         $this->seat = $seat;
 

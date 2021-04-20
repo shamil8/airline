@@ -42,7 +42,7 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
             ->setPassengerEmail('qurbonovshamil@gmail.com')
             ->setPassengerName('Shamil Qurbonov')
             ->setPhone('+79234045944')
-            ->setSeat('24C')
+            ->setSeat(12)
         ;
 
         $manager->persist($Ticket);
