@@ -43,6 +43,11 @@ class Ticket
      */
     private $flightId;
 
+    /**
+     * @ORM\Column(type="string", length=55, nullable=true)
+     */
+    private $passangerEmail;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +109,18 @@ class Ticket
     public function setFlightId(?Flight $flightId): self
     {
         $this->flightId = $flightId;
+
+        return $this;
+    }
+
+    public function getPassangerEmail(): ?string
+    {
+        return $this->passangerEmail;
+    }
+
+    public function setPassangerEmail(?string $passangerEmail): self
+    {
+        $this->passangerEmail = $passangerEmail;
 
         return $this;
     }

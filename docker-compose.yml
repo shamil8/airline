@@ -22,7 +22,7 @@ services:
     image: airline_api_dev
     container_name: airline_api
     volumes:
-      - ./:/app
+      - ./:/app:cached
       - api_public:/app/public
     env_file:
       - .env
