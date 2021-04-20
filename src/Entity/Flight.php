@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Constants\FlightConstants;
 use App\Repository\FlightRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -37,12 +38,12 @@ class Flight
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $status;
+    private $status = FlightConstants::ACTIVE;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $ifFlightTicketSales;
+    private $isFlightTicketSales = true;
 
     /**
      * @ORM\OneToMany(targetEntity=Ticket::class, mappedBy="flightId", orphanRemoval=true)
@@ -107,14 +108,14 @@ class Flight
         return $this;
     }
 
-    public function getIfFlightTicketSales(): ?bool
+    public function getIsFlightTicketSales(): ?bool
     {
-        return $this->ifFlightTicketSales;
+        return $this->isFlightTicketSales;
     }
 
-    public function setIfFlightTicketSales(?bool $ifFlightTicketSales): self
+    public function setIsFlightTicketSales(?bool $isFlightTicketSales): self
     {
-        $this->ifFlightTicketSales = $ifFlightTicketSales;
+        $this->isFlightTicketSales = $isFlightTicketSales;
 
         return $this;
     }

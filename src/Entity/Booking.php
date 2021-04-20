@@ -24,7 +24,7 @@ class Booking
     private $date;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $totalAmount;
 
@@ -55,12 +55,12 @@ class Booking
         return $this;
     }
 
-    public function getTotalAmount(): ?int
+    public function getTotalAmount(): ?float
     {
         return $this->totalAmount;
     }
 
-    public function setTotalAmount(?int $totalAmount): self
+    public function setTotalAmount(?float $totalAmount): self
     {
         $this->totalAmount = $totalAmount;
 

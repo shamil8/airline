@@ -25,7 +25,7 @@ class Ticket
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $passangerName;
+    private $passengerName;
 
     /**
      * @ORM\Column(type="string", length=55)
@@ -46,7 +46,7 @@ class Ticket
     /**
      * @ORM\Column(type="string", length=55, nullable=true)
      */
-    private $passangerEmail;
+    private $passengerEmail;
 
     public function getId(): ?int
     {
@@ -65,14 +65,14 @@ class Ticket
         return $this;
     }
 
-    public function getPassangerName(): ?string
+    public function getPassengerName(): ?string
     {
-        return $this->passangerName;
+        return $this->passengerName;
     }
 
-    public function setPassangerName(string $passangerName): self
+    public function setPassengerName(string $passengerName): self
     {
-        $this->passangerName = $passangerName;
+        $this->passengerName = $passengerName;
 
         return $this;
     }
@@ -113,14 +113,14 @@ class Ticket
         return $this;
     }
 
-    public function getPassangerEmail(): ?string
+    public function getPassengerEmail(): ?string
     {
-        return $this->passangerEmail;
+        return $this->passengerEmail;
     }
 
-    public function setPassangerEmail(?string $passangerEmail): self
+    public function setPassengerEmail(?string $passengerEmail): self
     {
-        $this->passangerEmail = $passangerEmail;
+        $this->passengerEmail = $passengerEmail;
 
         return $this;
     }
