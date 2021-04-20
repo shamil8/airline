@@ -51,7 +51,7 @@ services:
   # RabbitMQ — Message Queue server
   rabbitmq:
     image: rabbitmq:3-management-alpine
-    container_name: intr_rabbitmq
+    container_name: airline_rabbitmq
     ports:
       - "5679:5672"
 
