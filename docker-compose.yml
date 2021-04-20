@@ -40,13 +40,20 @@ services:
     ports:
       - 3306:3306
 
-  # Adminer for MySQL and MongoDB
+  # Adminer for MySQL
   adminer:
     image: adminer
     container_name: airline_adminer
     restart: always
     ports:
       - 8081:8080  # port for adminer 8081
+
+  # RabbitMQ — Message Queue server
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: intr_rabbitmq
+    ports:
+      - "5679:5672"
 
 volumes:
   api_public:
