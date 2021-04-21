@@ -16,12 +16,12 @@ class DefaultController  extends AbstractController
      * @param Request $req
      * @return JsonResponse
      */
-    public function dataUser(Request $req) : JsonResponse
+    public function dataUser(Request $req) : JsonResponse   // TODO:: add validation!
     {
         $data = $req->getContent();
         $data = json_decode($data, true)["data"];
 
-        if ($data['flight_id']) {
+        if ($data['flight_id']) {   // todo:: move in service!
             $em = $this->getDoctrine()->getManager();
             $flight = $this->getDoctrine()->getRepository(Flight::class)->find($data['flight_id']);
 

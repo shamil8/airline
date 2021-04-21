@@ -1,3 +1,6 @@
+echo "Symfony cache clear..."
+bin/console c:c
+
 # Create database
 echo "Creating airline database..."
 bin/console doctrine:database:create
