@@ -9,7 +9,7 @@ docker exec -it airline_api sh docker/init.sh
 ```
 
 ```TODO
-NEED TO add and ENABLE Swift_Message from src/Doctrine/FlightSetIsFlightListener.php!
+Move mailer in rabbit service!
 
 Пояснение:
 Можно было $isFlightTicketSales добавить в статусы рейса (исходил из того, что это по сути две разные вещи)
